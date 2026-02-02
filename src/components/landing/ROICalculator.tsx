@@ -38,9 +38,9 @@ const ROICalculator = () => {
   };
 
   return (
-    <section className="bg-midnight py-24 relative overflow-hidden">
+    <section id="roi-calculator" className="bg-midnight py-24 relative overflow-hidden">
       {/* Decorative gradient orb */}
-      <div 
+      <div
         className="absolute bottom-0 right-0 w-[500px] h-[500px] opacity-5 pointer-events-none"
         style={{
           background: 'radial-gradient(circle, hsl(38 92% 50%), transparent 60%)'
@@ -85,8 +85,8 @@ const ROICalculator = () => {
                 {/* Custom styled slider */}
                 <div className="relative">
                   <div className="slider-track">
-                    <div 
-                      className="slider-fill" 
+                    <div
+                      className="slider-fill"
                       style={{ width: `${(employees[0] / 1000) * 100}%` }}
                     />
                   </div>

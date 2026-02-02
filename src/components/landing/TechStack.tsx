@@ -71,9 +71,9 @@ const TechStack = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="bg-midnight py-24 relative overflow-hidden">
+    <section id="technology" ref={sectionRef} className="bg-midnight py-24 relative overflow-hidden">
       {/* Animated background grid */}
-      <div 
+      <div
         className="absolute inset-0 opacity-[0.03]"
         style={{
           backgroundImage: `
@@ -127,11 +127,11 @@ const TechStack = () => {
             <div className="relative space-y-4">
               {/* Animated connection line */}
               <div className="absolute left-8 top-0 bottom-0 w-px hidden md:block">
-                <div 
+                <div
                   className="h-full w-full transition-all duration-1000"
                   style={{
-                    background: isVisible 
-                      ? 'linear-gradient(to bottom, hsl(160 84% 39%), hsl(38 92% 50%), hsl(215 50% 55%))' 
+                    background: isVisible
+                      ? 'linear-gradient(to bottom, hsl(160 84% 39%), hsl(38 92% 50%), hsl(215 50% 55%))'
                       : 'transparent',
                     opacity: 0.3,
                   }}
@@ -154,15 +154,14 @@ const TechStack = () => {
               {layers.map((layer, index) => {
                 const IconComponent = layer.icon;
                 const isActive = activeLayer === layer.id;
-                
+
                 return (
                   <div
                     key={layer.id}
-                    className={`relative rounded-2xl border transition-all duration-500 cursor-pointer overflow-hidden ${
-                      isActive 
-                        ? 'border-opacity-100 bg-gradient-to-r scale-[1.02] shadow-xl' 
-                        : 'border-slate/20 bg-slate/5 hover:bg-slate/10'
-                    } ${isActive ? layer.gradient : ''}`}
+                    className={`relative rounded-2xl border transition-all duration-500 cursor-pointer overflow-hidden ${isActive
+                      ? 'border-opacity-100 bg-gradient-to-r scale-[1.02] shadow-xl'
+                      : 'border-slate/20 bg-slate/5 hover:bg-slate/10'
+                      } ${isActive ? layer.gradient : ''}`}
                     style={{
                       borderColor: isActive ? layer.color : undefined,
                       boxShadow: isActive ? `0 10px 40px ${layer.color}15` : undefined,
@@ -177,11 +176,10 @@ const TechStack = () => {
                     )}
 
                     {/* Left accent bar with pulse */}
-                    <div 
-                      className={`absolute left-0 top-0 bottom-0 w-1 transition-all duration-300 ${
-                        isActive ? 'animate-pulse' : ''
-                      }`}
-                      style={{ 
+                    <div
+                      className={`absolute left-0 top-0 bottom-0 w-1 transition-all duration-300 ${isActive ? 'animate-pulse' : ''
+                        }`}
+                      style={{
                         background: layer.color,
                         opacity: isActive ? 1 : 0.3,
                         boxShadow: isActive ? `0 0 15px ${layer.color}` : undefined,
@@ -192,26 +190,25 @@ const TechStack = () => {
                       <div className="flex flex-col md:flex-row md:items-center gap-6">
                         {/* Icon and title */}
                         <div className="flex items-center gap-4 md:w-72">
-                          <div 
-                            className={`w-14 h-14 rounded-xl flex items-center justify-center shrink-0 transition-all duration-500 ${
-                              isActive ? 'scale-110' : ''
-                            }`}
-                            style={{ 
+                          <div
+                            className={`w-14 h-14 rounded-xl flex items-center justify-center shrink-0 transition-all duration-500 ${isActive ? 'scale-110' : ''
+                              }`}
+                            style={{
                               background: isActive ? `${layer.color}30` : `${layer.color}15`,
                               boxShadow: isActive ? `0 0 25px ${layer.color}40` : undefined,
                             }}
                           >
-                            <IconComponent 
+                            <IconComponent
                               className={`w-7 h-7 transition-all duration-300 ${isActive ? 'animate-pulse' : ''}`}
-                              style={{ color: layer.color }} 
+                              style={{ color: layer.color }}
                             />
                           </div>
                           <div>
-                            <h3 className="font-semibold text-ivory text-lg flex items-center gap-2">
+                            <h3 className="font-semibold text-ivory text-lg flex items-center gap-2" style={{ fontFamily: 'DM Sans, system-ui, sans-serif' }}>
                               {layer.label}
                               {isActive && <Sparkles className="w-4 h-4 text-amber animate-pulse" />}
                             </h3>
-                            <p className="text-ivory/50 text-sm hidden md:block">
+                            <p className="text-ivory/50 text-sm hidden md:block" style={{ fontFamily: 'DM Sans, system-ui, sans-serif' }}>
                               {layer.description}
                             </p>
                           </div>
@@ -222,18 +219,18 @@ const TechStack = () => {
                           {layer.items.map((item, itemIndex) => (
                             <span
                               key={item}
-                              className={`px-4 py-2 text-sm rounded-full transition-all duration-300 cursor-default ${
-                                hoveredTag === `${layer.id}-${item}`
-                                  ? 'scale-110 shadow-lg'
-                                  : isActive 
-                                  ? 'text-ivory bg-midnight/30' 
+                              className={`px-4 py-2 text-sm rounded-full transition-all duration-300 cursor-default ${hoveredTag === `${layer.id}-${item}`
+                                ? 'scale-110 shadow-lg'
+                                : isActive
+                                  ? 'text-ivory bg-midnight/30'
                                   : 'text-ivory/60 bg-slate/10'
-                              }`}
-                              style={{ 
+                                }`}
+                              style={{
                                 borderColor: hoveredTag === `${layer.id}-${item}` ? layer.color : isActive ? `${layer.color}40` : 'transparent',
                                 borderWidth: '1px',
                                 boxShadow: hoveredTag === `${layer.id}-${item}` ? `0 0 15px ${layer.color}30` : undefined,
                                 animationDelay: isActive ? `${itemIndex * 50}ms` : '0ms',
+                                fontFamily: 'DM Sans, system-ui, sans-serif'
                               }}
                               onMouseEnter={() => setHoveredTag(`${layer.id}-${item}`)}
                               onMouseLeave={() => setHoveredTag(null)}
@@ -244,10 +241,9 @@ const TechStack = () => {
                         </div>
 
                         {/* Arrow with bounce */}
-                        <ChevronRight 
-                          className={`w-5 h-5 shrink-0 transition-all duration-300 hidden md:block ${
-                            isActive ? 'translate-x-2 text-ivory' : 'text-ivory/30'
-                          }`}
+                        <ChevronRight
+                          className={`w-5 h-5 shrink-0 transition-all duration-300 hidden md:block ${isActive ? 'translate-x-2 text-ivory' : 'text-ivory/30'
+                            }`}
                         />
                       </div>
                     </div>

@@ -48,10 +48,10 @@ const AgentDemo = () => {
   // Typing animation for current step
   useEffect(() => {
     if (isComplete) return;
-    
+
     const currentAction = agentSteps[activeStep]?.action || "";
     setTypedText("");
-    
+
     let charIndex = 0;
     const typeInterval = setInterval(() => {
       if (charIndex < currentAction.length) {
@@ -66,7 +66,7 @@ const AgentDemo = () => {
   }, [activeStep, isComplete]);
 
   return (
-    <section className="bg-midnight py-24 relative overflow-hidden">
+    <section id="demo" className="bg-midnight py-24 relative overflow-hidden">
       {/* Animated particle background */}
       <div className="absolute inset-0 pointer-events-none">
         {particles.map((particle) => (
@@ -128,7 +128,7 @@ const AgentDemo = () => {
             {/* Main demo container */}
             <div className="relative bg-gradient-to-br from-slate/40 to-slate/20 rounded-3xl border border-slate/30 p-8 md:p-12 backdrop-blur-sm overflow-hidden">
               {/* Animated glow effect */}
-              <div 
+              <div
                 className="absolute inset-0 opacity-30 pointer-events-none transition-all duration-1000"
                 style={{
                   background: `radial-gradient(circle at ${30 + activeStep * 15}% 50%, hsl(160 84% 39% / 0.3), transparent 50%)`,
@@ -150,42 +150,38 @@ const AgentDemo = () => {
                 {agentSteps.map((step, index) => (
                   <div
                     key={step.id}
-                    className={`relative p-4 rounded-xl border transition-all duration-500 ${
-                      index === activeStep
+                    className={`relative p-4 rounded-xl border transition-all duration-500 ${index === activeStep
                         ? "bg-emerald/10 border-emerald/50 scale-105"
                         : index < activeStep || isComplete
-                        ? "bg-slate/20 border-emerald/30"
-                        : "bg-slate/10 border-slate/30"
-                    }`}
+                          ? "bg-slate/20 border-emerald/30"
+                          : "bg-slate/10 border-slate/30"
+                      }`}
                   >
                     {/* Connection line */}
                     {index < agentSteps.length - 1 && (
                       <div className="hidden md:block absolute top-1/2 -right-4 w-4 h-0.5">
                         <div
-                          className={`h-full transition-all duration-500 ${
-                            index < activeStep || isComplete ? "bg-emerald" : "bg-slate/30"
-                          }`}
+                          className={`h-full transition-all duration-500 ${index < activeStep || isComplete ? "bg-emerald" : "bg-slate/30"
+                            }`}
                           style={{
                             width: index < activeStep || isComplete ? "100%" : "0%",
                           }}
                         />
                         <ArrowRight
-                          className={`absolute -right-2 -top-2 w-4 h-4 transition-colors duration-500 ${
-                            index < activeStep || isComplete ? "text-emerald" : "text-slate/30"
-                          }`}
+                          className={`absolute -right-2 -top-2 w-4 h-4 transition-colors duration-500 ${index < activeStep || isComplete ? "text-emerald" : "text-slate/30"
+                            }`}
                         />
                       </div>
                     )}
 
                     {/* Agent icon */}
                     <div
-                      className={`w-10 h-10 rounded-lg flex items-center justify-center mb-3 transition-all duration-500 ${
-                        index === activeStep
+                      className={`w-10 h-10 rounded-lg flex items-center justify-center mb-3 transition-all duration-500 ${index === activeStep
                           ? "bg-emerald text-midnight animate-pulse"
                           : index < activeStep || isComplete
-                          ? "bg-emerald/20 text-emerald"
-                          : "bg-slate/30 text-ivory/40"
-                      }`}
+                            ? "bg-emerald/20 text-emerald"
+                            : "bg-slate/30 text-ivory/40"
+                        }`}
                     >
                       {index < activeStep || isComplete ? (
                         <CheckCircle2 className="w-5 h-5" />
@@ -198,9 +194,8 @@ const AgentDemo = () => {
 
                     {/* Agent name */}
                     <p
-                      className={`text-sm font-medium transition-colors duration-300 ${
-                        index === activeStep ? "text-emerald" : "text-ivory/70"
-                      }`}
+                      className={`text-sm font-medium transition-colors duration-300 ${index === activeStep ? "text-emerald" : "text-ivory/70"
+                        }`}
                     >
                       {step.agent}
                     </p>

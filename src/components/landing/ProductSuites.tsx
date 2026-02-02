@@ -38,15 +38,15 @@ const ProductSuites = () => {
   const [hoveredFeature, setHoveredFeature] = useState<string | null>(null);
 
   return (
-    <section className="bg-midnight py-24 relative overflow-hidden">
+    <section id="products" className="bg-midnight py-24 relative overflow-hidden">
       {/* Animated background accent */}
-      <div 
+      <div
         className="absolute top-0 right-0 w-1/2 h-1/2 opacity-5 pointer-events-none"
         style={{
           background: 'radial-gradient(circle at top right, hsl(160 84% 39%), transparent 60%)'
         }}
       />
-      
+
       {/* Floating particles */}
       <div className="absolute inset-0 pointer-events-none">
         {[...Array(8)].map((_, i) => (
@@ -86,19 +86,17 @@ const ProductSuites = () => {
           {suites.map((suite, index) => (
             <ScrollReveal key={suite.id} animation="fadeUp" delay={index * 150}>
               <div
-                className={`card-hover group relative bg-card border rounded-2xl p-8 backdrop-blur-sm h-full transition-all duration-500 ${
-                  activeCard === suite.id 
-                    ? 'border-emerald/50 scale-[1.02]' 
+                className={`card-hover group relative bg-card border rounded-2xl p-8 backdrop-blur-sm h-full transition-all duration-500 ${activeCard === suite.id
+                    ? 'border-emerald/50 scale-[1.02]'
                     : 'border-slate/20 hover:border-slate/40'
-                }`}
+                  }`}
                 onMouseEnter={() => setActiveCard(suite.id)}
                 onMouseLeave={() => setActiveCard(null)}
               >
                 {/* Animated gradient border on hover */}
-                <div 
-                  className={`absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-500 pointer-events-none ${
-                    activeCard === suite.id ? 'opacity-100' : 'group-hover:opacity-50'
-                  }`}
+                <div
+                  className={`absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-500 pointer-events-none ${activeCard === suite.id ? 'opacity-100' : 'group-hover:opacity-50'
+                    }`}
                   style={{
                     background: 'radial-gradient(circle at 50% 0%, hsl(160 84% 39% / 0.15), transparent 60%)'
                   }}
@@ -112,25 +110,22 @@ const ProductSuites = () => {
                 )}
 
                 {/* Icon with pulse animation */}
-                <div className={`relative w-16 h-16 rounded-xl flex items-center justify-center mb-6 transition-all duration-500 ${
-                  activeCard === suite.id 
-                    ? 'bg-emerald/20 scale-110' 
+                <div className={`relative w-16 h-16 rounded-xl flex items-center justify-center mb-6 transition-all duration-500 ${activeCard === suite.id
+                    ? 'bg-emerald/20 scale-110'
                     : 'bg-slate/30 group-hover:bg-slate/40'
-                }`}>
-                  <suite.icon className={`w-8 h-8 transition-colors duration-300 ${
-                    suite.color === 'amber' ? 'text-amber' : 'text-emerald'
-                  }`} />
+                  }`}>
+                  <suite.icon className={`w-8 h-8 transition-colors duration-300 ${suite.color === 'amber' ? 'text-amber' : 'text-emerald'
+                    }`} />
                   {activeCard === suite.id && (
                     <div className="absolute inset-0 rounded-xl animate-ping bg-emerald/20" />
                   )}
                 </div>
 
                 {/* Stats badge */}
-                <div className={`absolute top-6 right-6 px-3 py-1.5 rounded-full text-xs font-semibold transition-all duration-500 ${
-                  activeCard === suite.id 
-                    ? 'bg-emerald/20 text-emerald scale-110' 
+                <div className={`absolute top-6 right-6 px-3 py-1.5 rounded-full text-xs font-semibold transition-all duration-500 ${activeCard === suite.id
+                    ? 'bg-emerald/20 text-emerald scale-110'
                     : 'bg-slate/20 text-ivory/50'
-                }`}>
+                  }`}>
                   {suite.stats.label}: {suite.stats.value}
                 </div>
 
@@ -145,24 +140,22 @@ const ProductSuites = () => {
                 {/* Features list with stagger animation */}
                 <ul className="space-y-3 mb-8">
                   {suite.features.map((feature, featureIndex) => (
-                    <li 
-                      key={feature} 
-                      className={`flex items-center gap-3 text-sm transition-all duration-300 cursor-default ${
-                        hoveredFeature === `${suite.id}-${feature}` 
-                          ? 'text-ivory translate-x-2' 
+                    <li
+                      key={feature}
+                      className={`flex items-center gap-3 text-sm transition-all duration-300 cursor-default ${hoveredFeature === `${suite.id}-${feature}`
+                          ? 'text-ivory translate-x-2'
                           : 'text-ivory/60'
-                      }`}
+                        }`}
                       onMouseEnter={() => setHoveredFeature(`${suite.id}-${feature}`)}
                       onMouseLeave={() => setHoveredFeature(null)}
                       style={{
                         transitionDelay: activeCard === suite.id ? `${featureIndex * 50}ms` : '0ms',
                       }}
                     >
-                      <CheckCircle2 className={`w-4 h-4 transition-colors duration-300 ${
-                        hoveredFeature === `${suite.id}-${feature}` 
-                          ? 'text-emerald' 
+                      <CheckCircle2 className={`w-4 h-4 transition-colors duration-300 ${hoveredFeature === `${suite.id}-${feature}`
+                          ? 'text-emerald'
                           : 'text-slate/50'
-                      }`} />
+                        }`} />
                       {feature}
                     </li>
                   ))}
@@ -171,11 +164,10 @@ const ProductSuites = () => {
                 {/* Go button with enhanced animation */}
                 <Button
                   variant="outline"
-                  className={`w-full rounded-xl group/btn transition-all duration-300 ${
-                    activeCard === suite.id 
-                      ? 'border-emerald/50 bg-emerald/10 text-emerald hover:bg-emerald/20' 
+                  className={`w-full rounded-xl group/btn transition-all duration-300 ${activeCard === suite.id
+                      ? 'border-emerald/50 bg-emerald/10 text-emerald hover:bg-emerald/20'
                       : 'border-slate/30 text-ivory hover:bg-slate/20 hover:border-slate/50'
-                  }`}
+                    }`}
                 >
                   <span>Explore Suite</span>
                   <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover/btn:translate-x-1" />

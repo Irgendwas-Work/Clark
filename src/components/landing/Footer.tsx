@@ -31,13 +31,13 @@ const Footer = () => {
           <div className="col-span-2">
             <div className="mb-6">
               <span className="font-display text-2xl font-semibold text-ivory">
-                AgentFlow
+                Clark
               </span>
             </div>
-            <p className="text-ivory/50 text-sm mb-6 max-w-xs font-light">
+            <p className="text-ivory/50 text-sm mb-6 max-w-xs font-light" style={{ fontFamily: 'DM Sans, system-ui, sans-serif' }}>
               Enterprise AI platform for intelligent automation and AI-native execution.
             </p>
-            
+
             {/* Social links */}
             <div className="flex gap-3">
               {socialLinks.map((social) => (
@@ -66,7 +66,7 @@ const Footer = () => {
           {/* Link columns */}
           {Object.entries(footerLinks).map(([key, section]) => (
             <div key={key}>
-              <h4 className="font-semibold text-ivory mb-4 text-sm uppercase tracking-widest">
+              <h4 className="font-semibold text-ivory mb-4 text-sm uppercase tracking-widest" style={{ fontFamily: 'DM Sans, system-ui, sans-serif' }}>
                 {section.title}
               </h4>
               <ul className="space-y-3">
@@ -75,6 +75,7 @@ const Footer = () => {
                     <a
                       href="#"
                       className="text-ivory/50 hover:text-ivory text-sm transition-colors duration-300"
+                      style={{ fontFamily: 'DM Sans, system-ui, sans-serif' }}
                     >
                       {link}
                     </a>
@@ -87,17 +88,17 @@ const Footer = () => {
 
         {/* Bottom bar */}
         <div className="border-t border-slate/20 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-ivory/40 text-sm">
-            © 2026 AgentFlow, Inc. All rights reserved.
+          <p className="text-ivory/40 text-sm" style={{ fontFamily: 'DM Sans, system-ui, sans-serif' }}>
+            © 2026 Clark, Inc. All rights reserved.
           </p>
           <div className="flex gap-6">
-            <a href="#" className="text-ivory/40 hover:text-ivory text-sm transition-colors duration-300">
+            <a href="#" className="text-ivory/40 hover:text-ivory text-sm transition-colors duration-300" style={{ fontFamily: 'DM Sans, system-ui, sans-serif' }}>
               Privacy Policy
             </a>
-            <a href="#" className="text-ivory/40 hover:text-ivory text-sm transition-colors duration-300">
+            <a href="#" className="text-ivory/40 hover:text-ivory text-sm transition-colors duration-300" style={{ fontFamily: 'DM Sans, system-ui, sans-serif' }}>
               Terms of Service
             </a>
-            <a href="#" className="text-ivory/40 hover:text-ivory text-sm transition-colors duration-300">
+            <a href="#" className="text-ivory/40 hover:text-ivory text-sm transition-colors duration-300" style={{ fontFamily: 'DM Sans, system-ui, sans-serif' }}>
               Cookie Settings
             </a>
           </div>

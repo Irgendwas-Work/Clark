@@ -15,7 +15,7 @@ const Hero = () => {
     const handleScroll = () => {
       setScrollY(window.scrollY);
     };
-    
+
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -66,27 +66,27 @@ const Hero = () => {
     <section ref={heroRef} className="hero-gradient relative min-h-screen flex items-center justify-center overflow-hidden particles-bg">
       {/* Interactive mouse-following orbs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div 
+        <div
           className="absolute w-[700px] h-[700px] rounded-full opacity-25 blur-3xl transition-transform duration-1000 ease-out"
-          style={{ 
+          style={{
             background: 'radial-gradient(circle, hsl(160 84% 39%) 0%, transparent 70%)',
             top: '5%',
             right: '5%',
             transform: `translate(${mousePos.x * -30 + scrollY * 0.3}px, ${mousePos.y * -30}px)`,
           }}
         />
-        <div 
+        <div
           className="absolute w-[600px] h-[600px] rounded-full opacity-20 blur-3xl transition-transform duration-1000 ease-out"
-          style={{ 
+          style={{
             background: 'radial-gradient(circle, hsl(215 25% 50%) 0%, transparent 70%)',
             bottom: '15%',
             left: '0%',
             transform: `translate(${mousePos.x * 40}px, ${mousePos.y * 40 + scrollY * -0.2}px)`,
           }}
         />
-        <div 
+        <div
           className="absolute w-[500px] h-[500px] rounded-full opacity-15 blur-2xl transition-transform duration-700 ease-out"
-          style={{ 
+          style={{
             background: 'radial-gradient(circle, hsl(38 92% 50%) 0%, transparent 70%)',
             top: '35%',
             left: '35%',
@@ -114,7 +114,7 @@ const Hero = () => {
       </div>
 
       {/* Parallax grid pattern */}
-      <div 
+      <div
         className="absolute inset-0 opacity-[0.04]"
         style={{
           backgroundImage: `
@@ -153,7 +153,7 @@ const Hero = () => {
       </svg>
 
       {/* Content */}
-      <div 
+      <div
         className="relative z-10 container mx-auto px-6 text-center"
         style={{ transform: `translateY(${scrollY * -0.15}px)` }}
       >
@@ -206,7 +206,7 @@ const Hero = () => {
           {/* Subheadline */}
           <ScrollReveal animation="fadeUp" delay={250}>
             <p className="text-lg md:text-xl text-ivory/60 max-w-2xl mx-auto leading-relaxed">
-              Transform your enterprise operations with intelligent AI agents that learn, 
+              Transform your enterprise operations with intelligent AI agents that learn,
               adapt, and execute complex workflows autonomously.
             </p>
           </ScrollReveal>
@@ -214,14 +214,14 @@ const Hero = () => {
           {/* CTA Button with enhanced glow */}
           <ScrollReveal animation="fadeUp" delay={300}>
             <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button 
+              <Button
                 className="btn-glow bg-emerald hover:bg-emerald/90 text-midnight font-semibold text-lg px-8 py-6 rounded-full gap-2 group animate-pulse-glow"
                 size="lg"
               >
                 Request Demo
                 <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
               </Button>
-              <Button 
+              <Button
                 variant="outline"
                 className="border-slate/40 text-ivory hover:bg-slate/20 text-lg px-8 py-6 rounded-full gap-2 group"
                 size="lg"
@@ -242,8 +242,8 @@ const Hero = () => {
               </p>
               <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12 stagger-children">
                 {['Oracle', 'TikTok', 'Microsoft', 'Salesforce', 'SAP', 'Adobe'].map((company) => (
-                  <span 
-                    key={company} 
+                  <span
+                    key={company}
                     className="text-ivory/40 font-display text-lg md:text-xl font-medium hover:text-ivory hover:scale-110 transition-all duration-300 cursor-default"
                   >
                     {company}
@@ -257,14 +257,6 @@ const Hero = () => {
 
       {/* Bottom gradient fade */}
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-midnight to-transparent" />
-      
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
-        <span className="text-ivory/30 text-xs uppercase tracking-widest">Scroll</span>
-        <div className="w-6 h-10 rounded-full border-2 border-ivory/20 flex justify-center pt-2">
-          <div className="w-1 h-2 rounded-full bg-ivory/40 animate-pulse" />
-        </div>
-      </div>
     </section>
   );
 };

@@ -13,28 +13,28 @@ interface Metric {
 }
 
 const metrics: Metric[] = [
-  { 
-    value: 15, 
-    suffix: "x", 
-    label: "ROI", 
+  {
+    value: 15,
+    suffix: "x",
+    label: "ROI",
     description: "Return on investment in the first year",
     color: "hsl(160 84% 39%)",
     icon: TrendingUp,
     comparison: "vs. industry avg 3x",
   },
-  { 
-    value: 55, 
-    suffix: "%", 
-    label: "Faster Response", 
+  {
+    value: 55,
+    suffix: "%",
+    label: "Faster Response",
     description: "Decreased average response time",
     color: "hsl(38 92% 50%)",
     icon: Clock,
     comparison: "2.3s → 1.03s avg",
   },
-  { 
-    value: 98, 
-    suffix: "%", 
-    label: "Resolution Rate", 
+  {
+    value: 98,
+    suffix: "%",
+    label: "Resolution Rate",
     description: "Issues resolved automatically",
     color: "hsl(215 50% 55%)",
     icon: CheckCircle,
@@ -42,16 +42,16 @@ const metrics: Metric[] = [
   },
 ];
 
-const AnimatedCounter = ({ 
-  target, 
+const AnimatedCounter = ({
+  target,
   suffix,
   color,
-  duration = 2000 
-}: { 
-  target: number; 
+  duration = 2000
+}: {
+  target: number;
   suffix: string;
   color: string;
-  duration?: number 
+  duration?: number
 }) => {
   const [count, setCount] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
@@ -83,7 +83,7 @@ const AnimatedCounter = ({
       if (!startTime) startTime = currentTime;
       const elapsed = currentTime - startTime;
       const progress = Math.min(elapsed / duration, 1);
-      
+
       const easeOut = 1 - Math.pow(1 - progress, 3);
       setCount(Math.floor(easeOut * target));
 
@@ -99,14 +99,14 @@ const AnimatedCounter = ({
 
   return (
     <span ref={ref} className="relative inline-block">
-      <span 
+      <span
         className="font-display text-6xl md:text-7xl font-bold tabular-nums transition-all duration-300"
         style={{ color: isComplete ? color : 'hsl(40 33% 98%)' }}
       >
         {count}{suffix}
       </span>
       {isComplete && (
-        <Sparkles 
+        <Sparkles
           className="absolute -top-2 -right-6 w-5 h-5 animate-pulse"
           style={{ color }}
         />
@@ -116,13 +116,13 @@ const AnimatedCounter = ({
 };
 
 // Animated circular progress
-const CircularProgress = ({ 
-  value, 
-  color, 
-  isVisible 
-}: { 
-  value: number; 
-  color: string; 
+const CircularProgress = ({
+  value,
+  color,
+  isVisible
+}: {
+  value: number;
+  color: string;
   isVisible: boolean;
 }) => {
   const circumference = 2 * Math.PI * 45;
@@ -198,7 +198,7 @@ const KPIResults = () => {
       </div>
 
       {/* Background glow */}
-      <div 
+      <div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] opacity-5 pointer-events-none"
         style={{
           background: 'radial-gradient(circle, hsl(160 84% 39%), transparent 60%)'
@@ -227,33 +227,31 @@ const KPIResults = () => {
           {metrics.map((metric, index) => {
             const IconComponent = metric.icon;
             const normalizedValue = metric.suffix === 'x' ? (metric.value / 20) * 100 : metric.value;
-            
+
             return (
               <ScrollReveal key={metric.label} animation="fadeUp" delay={index * 150}>
-                <div 
+                <div
                   className="relative group"
                   onMouseEnter={() => setHoveredCard(index)}
                   onMouseLeave={() => setHoveredCard(null)}
                 >
                   {/* Card */}
                   <div
-                    className={`relative bg-slate/10 border rounded-3xl p-8 text-center backdrop-blur-sm overflow-hidden transition-all duration-500 ${
-                      hoveredCard === index 
-                        ? 'border-opacity-100 scale-[1.03] shadow-xl' 
+                    className={`relative bg-slate/10 border rounded-3xl p-8 text-center backdrop-blur-sm overflow-hidden transition-all duration-500 ${hoveredCard === index
+                        ? 'border-opacity-100 scale-[1.03] shadow-xl'
                         : 'border-slate/20 hover:border-slate/40'
-                    }`}
+                      }`}
                     style={{
                       borderColor: hoveredCard === index ? metric.color : undefined,
                       boxShadow: hoveredCard === index ? `0 20px 60px ${metric.color}20` : undefined,
                     }}
                   >
                     {/* Animated top glow */}
-                    <div 
-                      className={`absolute top-0 left-0 right-0 h-1 transition-all duration-500 ${
-                        hoveredCard === index ? 'opacity-100' : 'opacity-0'
-                      }`}
-                      style={{ 
-                        background: `linear-gradient(90deg, transparent, ${metric.color}, transparent)` 
+                    <div
+                      className={`absolute top-0 left-0 right-0 h-1 transition-all duration-500 ${hoveredCard === index ? 'opacity-100' : 'opacity-0'
+                        }`}
+                      style={{
+                        background: `linear-gradient(90deg, transparent, ${metric.color}, transparent)`
                       }}
                     />
 
@@ -261,32 +259,31 @@ const KPIResults = () => {
                     {hoveredCard === index && (
                       <div className="absolute inset-0 animate-shimmer opacity-20 pointer-events-none" />
                     )}
-                    
+
                     {/* Circular progress behind icon */}
                     <div className="relative w-32 h-32 mx-auto mb-4">
-                      <CircularProgress 
-                        value={normalizedValue} 
-                        color={metric.color} 
-                        isVisible={isVisible} 
+                      <CircularProgress
+                        value={normalizedValue}
+                        color={metric.color}
+                        isVisible={isVisible}
                       />
-                      <div 
-                        className={`absolute inset-0 flex items-center justify-center transition-transform duration-500 ${
-                          hoveredCard === index ? 'scale-110' : ''
-                        }`}
+                      <div
+                        className={`absolute inset-0 flex items-center justify-center transition-transform duration-500 ${hoveredCard === index ? 'scale-110' : ''
+                          }`}
                       >
-                        <div 
+                        <div
                           className="w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-500"
-                          style={{ 
+                          style={{
                             background: `${metric.color}20`,
                             boxShadow: hoveredCard === index ? `0 0 30px ${metric.color}40` : undefined,
                           }}
                         >
-                          <IconComponent 
-                            className="w-7 h-7 transition-transform duration-300" 
-                            style={{ 
+                          <IconComponent
+                            className="w-7 h-7 transition-transform duration-300"
+                            style={{
                               color: metric.color,
                               transform: hoveredCard === index ? 'scale(1.1)' : 'scale(1)',
-                            }} 
+                            }}
                           />
                         </div>
                       </div>
@@ -294,31 +291,31 @@ const KPIResults = () => {
 
                     {/* Counter */}
                     <div className="mb-4">
-                      <AnimatedCounter 
-                        target={metric.value} 
-                        suffix={metric.suffix} 
+                      <AnimatedCounter
+                        target={metric.value}
+                        suffix={metric.suffix}
                         color={metric.color}
                       />
                     </div>
 
                     {/* Label */}
-                    <h3 className="text-ivory font-semibold text-xl mb-2">
+                    <h3 className="text-ivory font-semibold text-xl mb-2" style={{ fontFamily: 'DM Sans, system-ui, sans-serif' }}>
                       {metric.label}
                     </h3>
-                    
+
                     {/* Description */}
-                    <p className="text-ivory/50 text-sm mb-4">
+                    <p className="text-ivory/50 text-sm mb-4" style={{ fontFamily: 'DM Sans, system-ui, sans-serif' }}>
                       {metric.description}
                     </p>
 
                     {/* Comparison badge */}
-                    <div 
-                      className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-300 ${
-                        hoveredCard === index ? 'bg-opacity-30 scale-105' : 'bg-opacity-10'
-                      }`}
-                      style={{ 
+                    <div
+                      className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-300 ${hoveredCard === index ? 'bg-opacity-30 scale-105' : 'bg-opacity-10'
+                        }`}
+                      style={{
                         background: `${metric.color}15`,
                         color: metric.color,
+                        fontFamily: 'DM Sans, system-ui, sans-serif'
                       }}
                     >
                       <ArrowUpRight className="w-3 h-3" />
@@ -327,15 +324,15 @@ const KPIResults = () => {
 
                     {/* Animated progress bar */}
                     <div className="mt-6 h-1.5 rounded-full bg-slate/20 overflow-hidden">
-                      <div 
+                      <div
                         className="h-full rounded-full transition-all duration-[2000ms] ease-out relative overflow-hidden"
-                        style={{ 
+                        style={{
                           background: `linear-gradient(90deg, ${metric.color}, ${metric.color}80)`,
                           width: isVisible ? `${normalizedValue}%` : '0%',
                         }}
                       >
                         {/* Shimmer on bar */}
-                        <div 
+                        <div
                           className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
                           style={{
                             animation: isVisible ? 'shimmer 2s ease-in-out infinite' : 'none',
