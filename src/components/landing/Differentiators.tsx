@@ -1,5 +1,6 @@
 import { Bot, Database, Network } from "lucide-react";
 import ScrollReveal from "@/components/ui/ScrollReveal";
+import MoneyGeneratorAnimation from "./MoneyGeneratorAnimation";
 
 const differentiators = [
   {
@@ -21,11 +22,14 @@ const differentiators = [
 
 const Differentiators = () => {
   return (
-    <section className="bg-midnight py-24 relative">
+    <section className="bg-midnight py-24 relative overflow-hidden">
+      {/* Background animation */}
+      <MoneyGeneratorAnimation />
+      
       {/* Subtle gradient line at top */}
       <div className="absolute top-0 left-1/4 right-1/4 h-px bg-gradient-to-r from-transparent via-slate/40 to-transparent" />
 
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-6 relative z-10">
         {/* Section header */}
         <ScrollReveal animation="fadeUp">
           <div className="text-center mb-16 space-y-4">
